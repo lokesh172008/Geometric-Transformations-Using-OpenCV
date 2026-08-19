@@ -72,18 +72,31 @@ Read the input image in color mode.
 ##  Program
 
 ### Developed By:
-**Name:** ____________________________  
-
+**Name:** _
+K.Lokesh Achari
 ### Register No:
-____________________________  
+212225040208
 
 ---
 
 ##  Output
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+image = cv2.imread('car.jpg')  
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+plt.title("Original Image")  
+plt.axis('off')
+
+<img width="515" height="319" alt="download" src="https://github.com/user-attachments/assets/91b2ebe0-b218-4229-96d5-9f8361fe2eef" />
 
 ### Image Translation
-- Original image is displayed  
-- Translated image (shifted right and down) is displayed  
+tx, ty = 100, 50 
+M_translation = np.float32([[1, 0, tx], [0, 1, ty]])  
+translated_image = cv2.warpAffine(image, M_translation, (image.shape[1], image.shape[0])) 
+plt.imshow(cv2.cvtColor(translated_image, cv2.COLOR_BGR2RGB)) 
+plt.title("Translated Image")  
+plt.axis('off')
 
 ### Image Scaling
 - Original image is displayed  
